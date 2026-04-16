@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "author": "Furkan",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -67.2, "left": -91.16, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd",
+      "top": -176,
+      "left": 322.4,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht",
+      "top": 29.1,
+      "left": -639,
+      "attrs": { "humidity": "49" }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr",
+      "top": -83.2,
+      "left": -661.6,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb",
+      "top": 90.4,
+      "left": 423.5,
+      "attrs": { "common": "cathode" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn",
+      "top": 265.4,
+      "left": 48,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 90.35,
+      "left": 240,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 119.15,
+      "left": 240,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 147.95,
+      "left": 230.4,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:15", "dht:SDA", "green", [ "v0" ] ],
+    [ "esp:3V3", "dht:VCC", "red", [ "v0" ] ],
+    [ "esp:GND", "dht:GND", "black", [ "v0" ] ],
+    [ "esp:34", "ldr:AO", "green", [ "v0" ] ],
+    [ "esp:3V3", "ldr:VCC", "red", [ "v0" ] ],
+    [ "esp:GND", "ldr:GND", "black", [ "v0" ] ],
+    [ "esp:21", "lcd:SDA", "blue", [ "v0" ] ],
+    [ "esp:22", "lcd:SCL", "yellow", [ "v0" ] ],
+    [ "esp:5V", "lcd:VCC", "red", [ "v0" ] ],
+    [ "esp:GND", "lcd:GND", "black", [ "v0" ] ],
+    [ "esp:18", "btn:1.l", "green", [ "v0" ] ],
+    [ "esp:GND", "btn:2.l", "black", [ "v0" ] ],
+    [ "esp:25", "r1:1", "red", [ "v0" ] ],
+    [ "r1:2", "rgb:R", "red", [ "v0" ] ],
+    [ "esp:26", "r2:1", "green", [ "v0" ] ],
+    [ "r2:2", "rgb:G", "green", [ "v0" ] ],
+    [ "esp:27", "r3:1", "blue", [ "v0" ] ],
+    [ "r3:2", "rgb:B", "blue", [ "v0" ] ],
+    [ "esp:GND", "rgb:COM", "black", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
